@@ -7,13 +7,12 @@
 <h1>{{ instance.text }}</h1>
 {% endif %}
 
+
+<div class="container mx-auto" style="width: 400px;">
 <input type='hidden' name='question_id' value='{{ instance.id }}' />
-
-<!-- <img src="/media/questions/golden.jpg" class="img-rounded" alt="Cinque Terre"> -->
-
-
 <img src="{{instance.image.url}}" class="img-circle" alt="Cinque Terre">
 
+</div>
 
 
 
@@ -22,12 +21,22 @@
 {% else %}
 <h3>Your answer</h3>
 {% endif %}
+
+<div class='container'>
+<div class="row">
+
 {% for ans in instance.answer_set.all %}
+
+
+  <div class="col-3 col-md-3">
 
 <img src="{{ans.image.url}}" class="img-rounded" alt="Cinque Terre">
 <input type='radio' name='answer_id' value='{{ ans.id }}' {% if user_answer.my_answer.id == ans.id %}checked=checked{% endif %} /> {{ ans.text }} <br/>
+</div>
 {% endfor %}
 
+</div>
+</div>
 <br/>
 
 
