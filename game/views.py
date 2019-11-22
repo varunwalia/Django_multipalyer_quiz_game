@@ -4,16 +4,14 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
-from django.db.models import Q
+from django.db.models import Q,Max
 from questions.models import UserAnswer, Question
 from questions.forms import User_Form
 from questions.models import Question
-
+import random
 
 
 User = get_user_model()
-
-
 
 
 @login_required(login_url='/log_in/')
@@ -56,16 +54,23 @@ def sign_up(request):
     return render(request, 'signup.html', {'form': form})
 
 
-
+def get_random_user(cur_user):
+    max_id = User.objects.all().aggregate(max_id=Max("id"))['max_id']
+    while True :
+        pk = random.randint(1, max_id)
+        print(pk)
+        user = User.objects.filter(pk=pk).first()
+        print(user)
+        if user is not None and user!=cur_user:
+            print(user)
+            return user
 
 def get_match_score(request):
-    a = User.objects.get(username='varun')  ## dummy
-    curr_user = request.user.username
-    b = User.objects.get(username=curr_user)  
-    s = score(a,b)
+    cur_user = request.user
+    prev_user = get_random_user(cur_user)
+    s = score(prev_user,cur_user)
     print(s)
     return render(request, 'score_detail.html', {'score':s})
-
 
 
 def score(user_a, user_b):
