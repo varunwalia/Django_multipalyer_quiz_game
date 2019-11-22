@@ -1,0 +1,94 @@
+{% extends "index.html" %}
+{% load staticfiles %}
+
+
+<style>
+{% block style %}
+
+
+
+{% endblock %}
+
+</style>
+
+{% block content %}
+
+
+
+{% if new_user %}
+
+<div class='row'>
+<div class='col-sm-12'>
+
+{% if question_instance %}
+
+{% include "questions/user_response_form.html" with instance=question_instance form=question_form center_text=True %}	
+
+{% else %}
+
+<p class='lead text-center'>
+You have already answered all questions. Check back for more later.
+</p> 
+
+{% endif %}
+
+</div>
+</div>
+
+<div class='row'>
+<div class='col-sm-12'>
+<hr/>
+<p class='lead text-center'>
+Answer more questions to get matches and be able to connect with other users.
+</p>
+</div>
+</div>
+
+{% else %}
+<div class='row'>
+<div class='col-sm-12'>
+
+{% if question_instance %}
+
+{% include "questions/user_response_form.html" with instance=question_instance form=question_form center_text=True %}	
+
+{% else %}
+
+<p class='lead text-center'>
+You have already answered all questions. Move on to the next task for earning more points. 
+</p> 
+
+{% endif %}
+
+
+</div>
+<br />
+
+<br />
+
+<br />
+
+<p class='lead text-center'> Click on the Link below to check your score </p>
+
+<a class="btn btn-primary  btn-lg btn-block" href="{% url 'game:score'  %}" role="button">Score</a>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+
+
+
+
+{% endif %}
+
+{% endblock %}

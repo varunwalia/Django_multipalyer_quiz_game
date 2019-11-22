@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+
+{% block content %}
+  <a href="{% url 'game:log_out' %}">Log out</a>
+
+<h1> hello </h1>
+
+<h2> Wanna start the game ?? </h2>
+
+<button type="button" class="btn btn-outline-primary">
+  <a href="{% url 'questions:question_single' %}">Primary</a>
+</button>
+{% endblock content %}

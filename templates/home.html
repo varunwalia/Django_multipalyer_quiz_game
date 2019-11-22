@@ -1,0 +1,49 @@
+{% extends "index.html" %}
+{% load staticfiles %}
+
+
+<style>
+{% block style %}
+
+
+
+{% endblock %}
+
+</style>
+
+{% block content %}
+
+
+
+
+<div class="container">
+
+<div class="jumbotron">
+  <h1 class="display-4">Welcome to the game!</h1>
+  <p class="lead">This is a multiplayer quiz game powered using Django.</p>
+  <hr class="my-4">
+  <h1 class="display-2">Rules</h1>
+  <ul class="list-group">
+  <li class="list-group-item">Rule 1: You have to login in order to start the quiz.</li>
+  <li class="list-group-item">Rule 2: Click on Start to play the game.</li>
+  <li class="list-group-item">Rule 3: Select on a single answer for the questions available.</li>
+  <li class="list-group-item">Rule 4: You will be awarded a point if your answer matches with your opponent </li> 
+  <li class="list-group-item">Rule 5: You can quit the game any time.</li>
+  <li class="list-group-item">Rule 5: Press the below button to start the quiz.</li>
+
+</ul>
+  <a class="btn btn-primary btn-lg" href="/question/1" role="button">Start</a>
+</div>
+
+
+
+</div>
+
+
+{% endblock  %}
+
+
+
+
+
+

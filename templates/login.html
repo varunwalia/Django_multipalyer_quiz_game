@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <form action="{% url 'game:log_in' %}" method="post">
+    {% csrf_token %}
+
+    {{form | crispy}}
+
+    <button type="submit">Log in</button>
+  </form>
+  <p>Don't have an account? <a href="{% url 'game:sign_up' %}">Sign up!</a></p>
+{% endblock content %}

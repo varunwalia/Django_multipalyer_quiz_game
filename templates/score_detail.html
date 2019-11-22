@@ -1,0 +1,9 @@
+{% extends 'index.html' %}
+
+{% block content %}
+  <a href="{% url 'game:log_out' %}">Log out</a>
+
+<h1> Your Final Score is :</h1>
+
+<h3> score : {{score}} </h3>
+{% endblock content %}

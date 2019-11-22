@@ -1,0 +1,40 @@
+<div class='{% if center_text %}text-center{% endif %}'>
+<form method='POST' action='{% url "questions:question_single" id=instance.id %}'> {% csrf_token %}
+{{ form.errors }}
+{% if title_size %}
+<h{{ title_size }}>{{ instance.text }}</h{{ title_size }}>
+{% else %}
+<h1>{{ instance.text }}</h1>
+{% endif %}
+
+<input type='hidden' name='question_id' value='{{ instance.id }}' />
+
+<!-- <img src="/media/questions/golden.jpg" class="img-rounded" alt="Cinque Terre"> -->
+
+
+<img src="{{instance.image.url}}" class="img-circle" alt="Cinque Terre">
+
+
+
+
+{% if title_size %}
+<h{{ title_size|add:1 }}>Your Answer</h{{ title_size|add:1 }}>
+{% else %}
+<h3>Your answer</h3>
+{% endif %}
+{% for ans in instance.answer_set.all %}
+
+<img src="{{ans.image.url}}" class="img-rounded" alt="Cinque Terre">
+<input type='radio' name='answer_id' value='{{ ans.id }}' {% if user_answer.my_answer.id == ans.id %}checked=checked{% endif %} /> {{ ans.text }} <br/>
+{% endfor %}
+
+<br/>
+
+
+<input class='btn btn-primary' type='submit' value='Save and continue' />
+
+
+
+</form>
+
+</div>
