@@ -1,4 +1,4 @@
-Django==1.11
+Django==1.11.29
 django-crispy-forms==1.8.0
 pkg-resources==0.0.0
 pytz==2019.3
